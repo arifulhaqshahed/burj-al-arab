@@ -1,0 +1,13 @@
+.login-form{
+    margin: 20px auto;
+    width: 300px;
+    border: 2px solid slategrey;
+}
+.sign-in-btn{
+    background-color: slategrey;
+    color: snow;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 5px;
+}
