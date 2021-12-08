@@ -8,6 +8,8 @@ import Header from "./components/Header/Header";
 import Register from "./components/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Navigate } from "react-router-dom";
+import Completed from "./components/Completed/Completed";
 
 function App() {
   return (
@@ -25,8 +27,16 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Navigate to="/home">
+                <Home />
+              </Navigate>
+            }
+          />
           <Route path="/register" element={<Register />} />
+          <Route path="/registration-completed" element={<Completed />} />
         </Routes>
       </Router>
     </AuthProvider>

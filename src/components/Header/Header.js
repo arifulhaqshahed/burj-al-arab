@@ -6,7 +6,7 @@ import logo from "../../images/icons/logo.png";
 import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
-  const { user, logOut } = useAuth();
+  const { user, newUser, logOut } = useAuth();
   return (
     <div
       style={{
@@ -31,30 +31,27 @@ const Header = () => {
             <Link to="/login">Login</Link>
           </li>
           <li style={{ position: "relative" }}>
-            <img
-              width="40px"
-              style={{
-                borderRadius: "50%",
-                position: "absolute",
-                top: "-10px",
-              }}
-              src={user.photoURL}
-              alt=""
-            />
+            <span
+              style={{ color: "white", fontWeight: "700", fontSize: "larger" }}
+            >
+              {user.displayName}
+            </span>
           </li>
-          {user.email && (
+          {user.displayName ? (
             <li>
-              <button onClick={logOut} style={{ padding: "4px" }}>
+              <button onClick={logOut} style={{ padding: "8px" }}>
                 logout
               </button>
             </li>
+          ) : (
+            <li></li>
           )}
         </ul>
       </nav>
-      <div className="title-container">
+      {/* <div className="title-container">
         <h2>Burj Al Arab</h2>
         <h4>A global icon of Arabian luxury</h4>
-      </div>
+      </div> */}
     </div>
   );
 };

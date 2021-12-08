@@ -1,0 +1,15 @@
+.registraion-form{
+    margin: 20px auto;
+    border: 2px solid steelblue;
+    width: 300px;
+}
+.registraion-form input,select{
+    display: block;
+    margin: 20px;
+    padding: 8px;
+    border: 2px solid slategray;
+    border-radius: 3px;
+}
+.registraion-form p{
+    margin: 20px;
+}

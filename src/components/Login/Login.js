@@ -1,10 +1,20 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const { googleSignIn } = useAuth();
+  const { signInUser, googleSignIn } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    signInUser(data.email, data.password);
+  };
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,21 +24,28 @@ const Login = () => {
       navigate(redirect_uri);
     });
   };
-
   return (
     <div>
       <div className="login-form App">
         <h2>Please Login</h2>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Email: </label>
-          <input type="email" name="email" id="" />
+          <input
+            id="email"
+            placeholder="Your Email"
+            {...register("email", { required: true })}
+          />
           <br />
           <br />
           <label htmlFor="password">Password: </label>
-          <input type="password" name="password" id="" />
+          <input
+            id="password"
+            placeholder="Password"
+            {...register("password", { required: true })}
+          />
           <br />
           <br />
-          <input type="submit" value="Submit" />
+          <input style={{ padding: "8px" }} type="submit" value="Login" />
         </form>
         <p>
           New to burj-al-arab? <Link to="/register">Register</Link>{" "}
